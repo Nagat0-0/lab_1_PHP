@@ -60,3 +60,50 @@ body {
     padding: 15px;
     margin-top: auto;
 }
+
+.error-messages {
+    color: red;
+    background-color: #fee;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid red;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    padding: 5px;
+    width: 250px;
+    margin-top: 5px;
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    background-color: #e10600;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #b30000;
+}
+
+.success-message {
+    color: green;
+}
+
+.btn-home {
+    text-decoration: none;
+    background-color: #333;
+    color: white;
+    padding: 10px 15px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-home:hover {
+    background-color: #e10600;
+}
