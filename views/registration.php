@@ -29,8 +29,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        header("Location: index.php?action=registration_successful");
-        exit;
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $conn = new mysqli('127.0.0.1', 'root', '', 'f1_news_db', 3307);
+
+        if ($conn->connect_error) {
+            die("Помилка підключення до БД: " . $conn->connect_error);
+        }
+
+        $stmt = $conn->prepare("INSERT INTO users (login, password, email, first_name) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $login, $hashed_password, $email, $first_name);
+
+        if ($stmt->execute()) {
+            $stmt->close();
+            $conn->close();
+            header("Location: index.php?action=registration_successful");
+            exit;
+        } else {
+            $errors[] = "Помилка при збереженні в базу: " . $conn->error;
+            $stmt->close();
+            $conn->close();
+        }
     }
 }
 ?>
