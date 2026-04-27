@@ -26,6 +26,7 @@ body {
 
 .left-menu {
     width: 250px;
+    flex-shrink: 0;
     background-color: #15151e;
     color: white;
     padding: 20px;
@@ -50,6 +51,7 @@ body {
 
 .content {
     flex-grow: 1;
+    min-width: 0;
     padding: 30px;
 }
 
@@ -93,6 +95,7 @@ body {
 
 .success-message {
     color: green;
+    margin-bottom: 15px;
 }
 
 .btn-home {
@@ -106,4 +109,94 @@ body {
 
 .btn-home:hover {
     background-color: #e10600;
+}
+
+
+.news-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.checkbox-label input[type="checkbox"] {
+    width: auto !important;
+    margin: 0;
+}
+
+.news-article {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.news-article h3 {
+    margin-top: 0;
+}
+.news-meta {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 15px;
+}
+.status-pending {
+    color: red;
+    font-weight: bold;
+}
+.news-content {
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.action-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.btn-action {
+    text-decoration: none;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    color: white;
+    border-radius: 3px;
+    transition: opacity 0.2s;
+    display: inline-block;
+}
+.btn-action:hover { opacity: 0.8; }
+.btn-view { background-color: #3498db; }
+.btn-edit { background-color: #f39c12; }
+.btn-delete { background-color: #e74c3c; }
+
+.btn-cancel {
+    text-decoration: none;
+    color: #333;
+    margin-left: 15px;
+}
+.btn-cancel:hover { text-decoration: underline; }
+
+.btn-back {
+    text-decoration: none;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-top: 15px;
+    border-radius: 3px;
+}
+.btn-back:hover { background-color: #555; }
+
+.admin-message-box {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
