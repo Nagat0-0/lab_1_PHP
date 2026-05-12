@@ -10,13 +10,22 @@ $message = '';
 $conn = new mysqli('127.0.0.1', 'root', '', 'f1_news_db', 3307);
 
 if (!$conn->connect_error) {
-    $check_sql = "SELECT id FROM news WHERE id = $id";
+    $check_sql = "SELECT id, image FROM news WHERE id = $id";
     $result = $conn->query($check_sql);
 
     if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        
         $delete_sql = "DELETE FROM news WHERE id = $id";
         if ($conn->query($delete_sql) === TRUE) {
             $message = "Новину успішно видалено назавжди.";
+            if (!empty($row['image']) && file_exists('uploads/' . $row['image'])) {
+                unlink('uploads/' . $row['image']);
+            }
+            
+            if (file_exists('cache/news_public.json')) unlink('cache/news_public.json');
+            if (file_exists('cache/news_admin.json')) unlink('cache/news_admin.json');
+            
         } else {
             $message = "Помилка при видаленні: " . $conn->error;
         }
@@ -29,7 +38,6 @@ if (!$conn->connect_error) {
 
 <main class="content">
     <h2>Видалення новини</h2>
-    
     <div class="admin-message-box">
         <p><strong><?php echo $message; ?></strong></p>
         <a href="index.php?action=news" class="btn-back">Повернутися до стрічки новин</a>
